@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+
+
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header__inner">
+        <a class="logo" href="#">
+          <img class="logo__img" src="img/logo.svg" alt="logo image">
+        </a>
+        <button class="header__btn" id="addBookBtn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="34">
+            <path
+              d="M17.145 5.313c0-1.176-.961-2.125-2.145-2.125-1.184 0-2.145.949-2.145 2.124v9.563h-9.64c-1.188 0-2.145.95-2.145 2.125 0 1.176.957 2.125 2.145 2.125h9.64v9.563c0 1.175.961 2.125 2.145 2.125 1.184 0 2.145-.95 2.145-2.125v-9.563h9.64c1.188 0 2.145-.95 2.145-2.125a2.131 2.131 0 0 0-2.145-2.125h-9.64Zm0 0"
+              style="stroke:none;fill-rule:nonzero;fill:#fff;fill-opacity:1" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+
+  <section class="top">
+    <div class="container">
+      <div class="top__inner">
+        <div class="grid">
+          <div class="grid__item">
+            <h6 class="grid__item-title">Title</h6>
+            <p class="grid__item-author">Collins G. R.</p>
+            <span class="grid__item-pages">158</span>
+            <button class="grid__item-check">Read</button>
+            <bnt class="grid__item-remove">Remove</bnt>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="modal" id="modalTab">
+    <h2 class="modal__title">
+      Add new book
+    </h2>
+    <form class="modal__form">
+      <input class="modal__item" id="title" type="text" placeholder="Title" required>
+      <input class="modal__item" id="author" type="text" placeholder="Author" required>
+      <input class="modal__item" id="pages" type="text" placeholder="Pages" required max="10000">
+      <div class="modal__box">
+        <label class="modal__label" for="idRead">Have you read it?</label>
+        <input class="modal__checkbox" id="isRead" type="checkbox">
+      </div>
+      <button class="modal__btn" type="submit">Submit</button>
+    </form>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+
+  <script src="js/main.min.js"></script>
+</body>
+
+</html>
