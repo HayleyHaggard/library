@@ -13,26 +13,32 @@ class Book {
 }
 
 class Library {
+
   constructor() {
     this.books = []
   }
 
   addBook(newBook) {
-    this.books.push(newBook);
+    if (!this.isInLibrary(newBook)) {
+      this.books.push(newBook);
+    }
   }
 
   removeBook(title) {
-    this.books = this.books.filter(book => book.title !== title);
+    this.books = this.books.filter((book) => book.title !== title);
   }
 
   isInLibrary(newBook) {
-    return this.books = this.books.some(book => book.title == newBook.title)
+    return this.books.some((book) => book.title === newBook.title);
   }
 }
+
+
 
 const library = new Library();
 
 const addBookBtn = document.getElementById('addBookBtn');
+const addBookForm = document.getElementById('addBookForm')
 const modalTab = document.getElementById('modalTab');
 const overlay = document.getElementById('overlay');
 
@@ -42,27 +48,7 @@ const openModalTab = () => {
   overlay.classList.add('active');
 }
 
-addBookBtn.onclick = openModalTab;
 
-const addBook = (e) => {
-  //? preventdefault from form
-  const newBook = getBookFromInput();
-
-  if (library.isInLibrary(newBook)) {
-    //todo add such class and item
-    // errorMessage.textContent = 'Such book already exists in your library';
-    // errorMessage.classList.add('active');
-    console.log('error')
-  } else {
-    library.addBook(newBook);
-    //todo write savelocal and updateBooksGrid
-    saveLocal();
-    updateBooksGrid();
-  }
-
-  //todo write func
-  closeModal();
-}
 
 const getBookFromInput = () => {
   const titleInp = document.getElementById('title').value;
@@ -72,4 +58,36 @@ const getBookFromInput = () => {
 
   return new Book(titleInp, authorInp, pagesInp, isReadInp);
 }
+
+
+const addBook = (e) => {
+  e.preventDefault();
+  const newBook = getBookFromInput();
+
+  if (library.isInLibrary(newBook)) {
+    //   //todo add such class and item
+    // errorMessage.textContent = 'Such book already exists in your library';
+    // errorMessage.classList.add('active');
+    console.log('error')
+  } else {
+    library.addBook(newBook);
+    //todo write savelocal and updateBooksGrid
+    // saveLocal();
+    // updateBooksGrid();
+  }
+
+  //todo write func
+  // closeModal();
+}
+
+
+
+
+
+addBookBtn.onclick = openModalTab;
+addBookForm.onsubmit = addBook;
+
+
+
+
 
